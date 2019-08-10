@@ -4,7 +4,7 @@
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        4.git%{shortcommit0}%{?dist}
+Release:        5.git%{shortcommit0}%{?dist}
 Summary:        DVB firmwares
 
 License:        Redistributable, no modification permitted
@@ -51,6 +51,9 @@ rm -rf %{buildroot}/lib/firmware/LICENCE.go7007
 
 
 %changelog
+* Sat Aug 10 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 20170329-5.git3fef04a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Tue Mar 05 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 20170329-4.git3fef04a
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
