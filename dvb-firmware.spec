@@ -4,7 +4,7 @@
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        6.git%{shortcommit0}%{?dist}
+Release:        7.git%{shortcommit0}%{?dist}
 Summary:        DVB firmwares
 
 License:        Redistributable, no modification permitted
@@ -44,6 +44,11 @@ find %{buildroot}/lib/firmware/* -type d -delete
 # Remove linux-firmware provided content
 rm -rf %{buildroot}/lib/firmware/LICENCE.go7007
 
+# Remove ivtv-firmware
+for i in v4l-cx2341x-dec.fw v4l-cx2341x-enc.fw v4l-cx2341x-init.mpg v4l-pvrusb2-24xxx-01.fw v4l-pvrusb2-29xxx-01.fw ; do
+  rm -f %{buildroot}/lib/firmware/${i}
+done
+
 
 
 %files
@@ -51,6 +56,9 @@ rm -rf %{buildroot}/lib/firmware/LICENCE.go7007
 
 
 %changelog
+* Fri May 22 2020 Nicolas Chauvet <kwizart@gmail.com> - 20170329-7.git3fef04a
+- Remove ivtv-firmware provided files
+
 * Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 20170329-6.git3fef04a
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
