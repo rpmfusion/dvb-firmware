@@ -1,14 +1,14 @@
-%global commit0 3fef04a4a4bfeba88ae3b20aff9d3a1fabf1c159
+%global commit0 6c61d1249b9bad2a9f900664049574fcaac8de96
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global commitdate0 20170329
+%global commitdate0 20200922
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        9.git%{shortcommit0}%{?dist}
+Release:        10.git%{shortcommit0}%{?dist}
 Summary:        DVB firmwares
 
 License:        Redistributable, no modification permitted
-URL:            https://github.com/OpenELEC/dvb-firmware
+URL:            https://github.com/LibreELEC/dvb-firmware
 Source0:        %{url}/archive/%{commit0}/%{name}-%{shortcommit0}.tar.gz
 BuildArch:      noarch
 
@@ -56,6 +56,9 @@ done
 
 
 %changelog
+* Sun Feb 07 2021 Nicolas Chauvet <kwizart@gmail.com> - 20200922-10.git6c61d12
+- Switch to LibreELEC
+
 * Thu Feb 04 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 20170329-9.git3fef04a
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
