@@ -1,10 +1,10 @@
-%global commit0 6c61d1249b9bad2a9f900664049574fcaac8de96
+%global commit0 0eaf5b3928561d06d254cf5489d1e622bc827e5d
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global commitdate0 20200922
+%global commitdate0 20210719
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        12.git%{shortcommit0}%{?dist}
+Release:        1.git%{shortcommit0}%{?dist}
 Summary:        DVB firmwares
 
 License:        Redistributable, no modification permitted
@@ -39,7 +39,7 @@ done
 cp -pr firmware/* %{buildroot}/lib/firmware
 
 # Remove empty directories
-find %{buildroot}/lib/firmware/* -type d -delete
+find %{buildroot}/lib/firmware/* -empty -type d -delete
 
 # Remove linux-firmware provided content
 rm -rf %{buildroot}/lib/firmware/LICENCE.go7007
@@ -56,6 +56,9 @@ done
 
 
 %changelog
+* Mon Feb 28 2022 Sérgio Basto <sergio@serjux.com> - 20210719-1.git0eaf5b3
+- Update and fix the build
+
 * Thu Feb 10 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20200922-12.git6c61d12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
