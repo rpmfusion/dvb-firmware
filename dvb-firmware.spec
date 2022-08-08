@@ -4,7 +4,7 @@
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        1.git%{shortcommit0}%{?dist}
+Release:        2.git%{shortcommit0}%{?dist}
 Summary:        DVB firmwares
 
 License:        Redistributable, no modification permitted
@@ -56,6 +56,10 @@ done
 
 
 %changelog
+* Mon Aug 08 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20210719-2.git0eaf5b3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
+  5.1
+
 * Mon Feb 28 2022 Sérgio Basto <sergio@serjux.com> - 20210719-1.git0eaf5b3
 - Update and fix the build
 
