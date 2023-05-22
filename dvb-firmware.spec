@@ -4,18 +4,23 @@
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        2.git%{shortcommit0}%{?dist}
-Summary:        DVB firmwares
+Release:        3.git%{shortcommit0}%{?dist}
+Summary:        DVB firmware nonfree
 
 License:        Redistributable, no modification permitted
 URL:            https://github.com/LibreELEC/dvb-firmware
 Source0:        %{url}/archive/%{commit0}/%{name}-%{shortcommit0}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  linux-firmware
+BuildRequires:  dvb-firmware
 
 %description
-DVB firmwares.
+DVB firmware nonfree.
+
+%package nonfree
+Summary: DVB firmware nonfree
+
+%description nonfree
 
 
 %prep
@@ -56,6 +61,9 @@ done
 
 
 %changelog
+* Mon May 22 2023 Nicolas Chauvet <kwizart@gmail.com> - 20210719-3.git0eaf5b3
+- Switch to nonfree sub-package
+
 * Mon Aug 08 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20210719-2.git0eaf5b3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
