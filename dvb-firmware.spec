@@ -4,7 +4,7 @@
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        3.git%{shortcommit0}%{?dist}
+Release:        4.git%{shortcommit0}%{?dist}
 Summary:        DVB firmware nonfree
 
 License:        Redistributable, no modification permitted
@@ -56,12 +56,12 @@ done
 
 
 
-%files
+%files nonfree
 /lib/firmware/*
 
 
 %changelog
-* Mon May 22 2023 Nicolas Chauvet <kwizart@gmail.com> - 20210719-3.git0eaf5b3
+* Mon May 22 2023 Nicolas Chauvet <kwizart@gmail.com> - 20210719-4.git0eaf5b3
 - Switch to nonfree sub-package
 
 * Mon Aug 08 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20210719-2.git0eaf5b3
