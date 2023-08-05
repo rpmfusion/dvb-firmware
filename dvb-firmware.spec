@@ -1,10 +1,10 @@
-%global commit0 0eaf5b3928561d06d254cf5489d1e622bc827e5d
+%global commit0 3c1910ba4cd0c3e241796ec6025d1b8e882a892f
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global commitdate0 20210719
+%global commitdate0 20230604
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        5.git%{shortcommit0}%{?dist}
+Release:        6.git%{shortcommit0}%{?dist}
 Summary:        DVB firmware nonfree
 
 License:        Redistributable, no modification permitted
@@ -35,7 +35,7 @@ Summary: DVB firmware nonfree
 mkdir -p %{buildroot}/lib/firmware
 # Verify that this package co-install with linux-firmware
 for i in $(find firmware ! -type d) ; do
-  if [ -e /lib/${i} ] ; then
+  if [ -e /lib/${i}.xz ] ; then
     rm -f ${i}
     echo "Removing ${i}"
   fi
@@ -54,6 +54,8 @@ for i in v4l-cx2341x-dec.fw v4l-cx2341x-enc.fw v4l-cx2341x-init.mpg v4l-pvrusb2-
   rm -f %{buildroot}/lib/firmware/${i}
 done
 
+# Compress to xz
+find %{buildroot}/lib/firmware -name "dvb*" -type f -exec xz {} ';'
 
 
 %files nonfree
@@ -61,6 +63,10 @@ done
 
 
 %changelog
+* Sat Aug 05 2023 Nicolas Chauvet <kwizart@gmail.com> - 20230604-6.git3c1910b
+- Update snapshot
+- Fix duplication and xz compress - rfbz#6736
+
 * Thu Aug 03 2023 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20210719-5.git0eaf5b3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
