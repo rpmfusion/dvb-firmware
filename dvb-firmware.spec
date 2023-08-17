@@ -4,7 +4,7 @@
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        6.git%{shortcommit0}%{?dist}
+Release:        7.git%{shortcommit0}%{?dist}
 Summary:        DVB firmware nonfree
 
 License:        Redistributable, no modification permitted
@@ -32,10 +32,21 @@ Summary: DVB firmware nonfree
 
 
 %install
+# Remove linux-firmware provided content
+rm -rf firmware/go7007
+
+# Remove ivtv-firmware
+for i in v4l-cx2341x-dec.fw v4l-cx2341x-enc.fw v4l-cx2341x-init.mpg v4l-pvrusb2-24xxx-01.fw v4l-pvrusb2-29xxx-01.fw ; do
+  rm -f firmware/${i}
+done
+
 mkdir -p %{buildroot}/lib/firmware
 # Verify that this package co-install with linux-firmware
 for i in $(find firmware ! -type d) ; do
   if [ -e /lib/${i}.xz ] ; then
+    rm -f ${i}.xz
+    echo "Removing ${i}.xz"
+  elif [ -e /lib/${i} ] ; then
     rm -f ${i}
     echo "Removing ${i}"
   fi
@@ -46,23 +57,15 @@ cp -pr firmware/* %{buildroot}/lib/firmware
 # Remove empty directories
 find %{buildroot}/lib/firmware/* -empty -type d -delete
 
-# Remove linux-firmware provided content
-rm -rf %{buildroot}/lib/firmware/LICENCE.go7007
-
-# Remove ivtv-firmware
-for i in v4l-cx2341x-dec.fw v4l-cx2341x-enc.fw v4l-cx2341x-init.mpg v4l-pvrusb2-24xxx-01.fw v4l-pvrusb2-29xxx-01.fw ; do
-  rm -f %{buildroot}/lib/firmware/${i}
-done
-
-# Compress to xz
-find %{buildroot}/lib/firmware -name "dvb*" -type f -exec xz {} ';'
-
 
 %files nonfree
 /lib/firmware/*
 
 
 %changelog
+* Thu Aug 17 2023 Nicolas Chauvet <kwizart@gmail.com> - 20230604-7.git3c1910b
+- Drop compression and fix duplicates - rfbz#6736
+
 * Sat Aug 05 2023 Nicolas Chauvet <kwizart@gmail.com> - 20230604-6.git3c1910b
 - Update snapshot
 - Fix duplication and xz compress - rfbz#6736
