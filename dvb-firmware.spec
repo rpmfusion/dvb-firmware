@@ -4,7 +4,7 @@
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        11.git%{shortcommit0}%{?dist}
+Release:        12.git%{shortcommit0}%{?dist}
 Summary:        DVB firmware nonfree
 
 License:        Redistributable, no modification permitted
@@ -63,6 +63,9 @@ find %{buildroot}/lib/firmware/* -empty -type d -delete
 
 
 %changelog
+* Mon Feb 02 2026 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20230604-12.git3c1910b
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
 * Sun Jul 27 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20230604-11.git3c1910b
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
 
