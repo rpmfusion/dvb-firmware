@@ -1,10 +1,10 @@
-%global commit0 3c1910ba4cd0c3e241796ec6025d1b8e882a892f
+%global commit0 90261ae2934329f6ca84dd6c72d10d0777bf4b0e
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global commitdate0 20230604
+%global commitdate0 20250629
 
 Name:           dvb-firmware
 Version:        %{commitdate0}
-Release:        12.git%{shortcommit0}%{?dist}
+Release:        1.git%{shortcommit0}%{?dist}
 Summary:        DVB firmware nonfree
 
 License:        Redistributable, no modification permitted
@@ -63,6 +63,9 @@ find %{buildroot}/lib/firmware/* -empty -type d -delete
 
 
 %changelog
+* Fri Feb 27 2026 Nicolas Chauvet <kwizart@gmail.com> - 20250629-1.git90261ae
+- Update to 20250629
+
 * Mon Feb 02 2026 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20230604-12.git3c1910b
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
 
